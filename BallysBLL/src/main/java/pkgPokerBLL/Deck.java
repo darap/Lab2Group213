@@ -1,6 +1,7 @@
 package pkgPokerBLL;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.UUID;
 
 import pkgPokerEnum.eRank;
@@ -18,12 +19,12 @@ public class Deck {
 		for (eRank Rank : eRank.values()) {
 			System.out.println(Rank.getiRankNbr());
 		}
+		
+		Collections.shuffle(DeckCards);
 	}
 	
 	public Card DrawCard()
 	{
-		//	TODO: Implement this method... should draw a card from the deck.
-		
-		return null;
+		return DeckCards.remove(0);
 	}
 }

@@ -24,6 +24,11 @@ public enum eHandStrength {
 			return "Full House";
 		}
 	},
+	AcesAndEights(65, "isHandAcesAndEights"){
+		public String toString(){
+			return "Aces and Eights";
+		}
+	},
 	Flush(60, "isHandFlush") {
 		public String toString() {
 			return "Flush";
