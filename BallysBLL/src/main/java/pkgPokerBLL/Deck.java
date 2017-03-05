@@ -12,20 +12,20 @@ public class Deck {
 	private UUID DeckID;
 	private ArrayList<Card> DeckCards = new ArrayList<Card>();
 
-	public Deck()
-	{
-		//TODO: Implement This Constructor (no-arg Deck should build up a deck with 52 cards)
-		for ( eRank r : eRank.values()) {
-			for (eSuit s : eSuit.values()){
+	public Deck() {
+		// TODO: Implement This Constructor (no-arg Deck should build up a deck with 52 cards)
+		// Check if this works
+		for (eRank r : eRank.values()) {
+			for (eSuit s : eSuit.values()) {
 				DeckCards.add(new Card(r, s));
 			}
 		}
-		
-		//	This method will do a for/each, returning each rank in the enum.
+
+		// This method will do a for/each, returning each rank in the enum.
 		for (eRank Rank : eRank.values()) {
 			System.out.println(Rank.getiRankNbr());
 		}
-		
+
 		Collections.shuffle(DeckCards);
 	}
 
