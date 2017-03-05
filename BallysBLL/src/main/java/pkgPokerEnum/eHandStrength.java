@@ -2,7 +2,7 @@ package pkgPokerEnum;
 
 public enum eHandStrength {
 
-	//TODO: Add "AcesAndEights" between Flush and FullHouse
+	
 	
 	RoyalFlush(100, "isHandRoyalFlush") {
 		public String toString() {
