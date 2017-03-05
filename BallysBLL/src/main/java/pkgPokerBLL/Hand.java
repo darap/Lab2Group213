@@ -85,6 +85,7 @@ public class Hand {
 	// TODO: Implement This Method
 	public static boolean isHandRoyalFlush(Hand h, HandScore hs) {
 		return false;
+
 	}
 
 	// TODO: Implement This Method
@@ -99,7 +100,22 @@ public class Hand {
 
 	// TODO: Implement This Method
 	public static boolean isHandFlush(Hand h, HandScore hs) {
-		return false;
+		{
+			ArrayList<Card> kickers = new ArrayList<Card>();
+			if (h.getCardsInHand().get(eCardNo.FirstCard.getCardNo()).geteSuit() == h.getCardsInHand()
+					.get(eCardNo.SecondCard.getCardNo()).geteSuit()
+					&& (h.getCardsInHand().get(eCardNo.FirstCard.getCardNo()).geteSuit() == h.getCardsInHand()
+							.get(eCardNo.ThirdCard.getCardNo()).geteSuit())
+					&& (h.getCardsInHand().get(eCardNo.FirstCard.getCardNo()).geteSuit() == h.getCardsInHand()
+							.get(eCardNo.FourthCard.getCardNo()).geteSuit())
+					&& (h.getCardsInHand().get(eCardNo.FirstCard.getCardNo()).geteSuit() == h.getCardsInHand()
+							.get(eCardNo.FifthCard.getCardNo()).geteSuit())) {
+				return true;
+			}
+
+			else
+				return false;
+		}
 	}
 
 	// TODO: Implement This Method
@@ -127,7 +143,7 @@ public class Hand {
 						hs.setLoHand(h.getCardsInHand().get(eCardNo.FifthCard.getCardNo()).geteRank());
 						hs.getKickers().add(h.getCardsInHand().get(eCardNo.FourthCard.getCardNo()));
 						hs.getKickers().add(h.getCardsInHand().get(eCardNo.FifthCard.getCardNo()));
-						
+
 					}
 				}
 			}
