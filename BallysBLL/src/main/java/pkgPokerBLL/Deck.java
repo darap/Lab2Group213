@@ -13,8 +13,6 @@ public class Deck {
 	private ArrayList<Card> DeckCards = new ArrayList<Card>();
 
 	public Deck() {
-		// TODO: Implement This Constructor (no-arg Deck should build up a deck with 52 cards)
-		// Check if this works
 		for (eRank r : eRank.values()) {
 			for (eSuit s : eSuit.values()) {
 				DeckCards.add(new Card(r, s));

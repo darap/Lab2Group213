@@ -5,8 +5,12 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.lang.reflect.InvocationTargetException;
 import java.util.UUID;
+
+import javax.net.ssl.SSLEngineResult.HandshakeStatus;
+
 import pkgPokerEnum.eCardNo;
 import pkgPokerEnum.eHandStrength;
+import pkgPokerEnum.eRank;
 
 public class Hand {
 
@@ -98,7 +102,7 @@ public class Hand {
 		return false;
 	}
 
-	// TODO: Implement This Method
+	
 	public static boolean isHandFlush(Hand h, HandScore hs) {
 		{
 			ArrayList<Card> kickers = new ArrayList<Card>();
@@ -118,7 +122,7 @@ public class Hand {
 		}
 	}
 
-	// TODO: Implement This Method
+	
 	public static boolean isHandStraight(Hand h, HandScore hs) {
 		boolean isHandStraight = false;
 
@@ -205,9 +209,33 @@ public class Hand {
 		return false;
 	}
 
-	// TODO: Implement This Method
+	
 	public static boolean isAcesAndEights(Hand h, HandScore hs) {
-		return false;
+		boolean isAcesAndEights = false;
+		ArrayList<Card> kickers = new ArrayList<Card>();
+		if (h.getCardsInHand().get(eCardNo.FirstCard.getCardNo()).geteRank() == h.getCardsInHand()
+				.get(eCardNo.SecondCard.getCardNo()).geteRank()
+				&& (h.getCardsInHand().get(eCardNo.FirstCard.getCardNo()).geteRank() == eRank.ACE)) {
+			if (h.getCardsInHand().get(eCardNo.ThirdCard.getCardNo()).geteRank() == h.getCardsInHand()
+					.get(eCardNo.FourthCard.getCardNo()).geteRank()
+					&& (h.getCardsInHand().get(eCardNo.ThirdCard.getCardNo()).geteRank() == eRank.EIGHT)) {
+				kickers.add(h.getCardsInHand().get(eCardNo.FifthCard.getCardNo()));
+				isAcesAndEights = true;
+			}
+			if (h.getCardsInHand().get(eCardNo.FifthCard.getCardNo()).geteRank() == h.getCardsInHand()
+					.get(eCardNo.FourthCard.getCardNo()).geteRank()
+					&& (h.getCardsInHand().get(eCardNo.ThirdCard.getCardNo()).geteRank() == eRank.EIGHT)) {
+				kickers.add(h.getCardsInHand().get(eCardNo.ThirdCard.getCardNo()));
+				isAcesAndEights = true;
+
+			} 
+			else {
+				return isAcesAndEights;
+			}
+
+		}
+		return isAcesAndEights;
+
 	}
 
 	public static boolean isHandFullHouse(Hand h, HandScore hs) {
