@@ -201,12 +201,23 @@ public class Hand {
 
 	// TODO: Implement This Method
 	public static boolean isHandPair(Hand h, HandScore hs) {
-		return false;
+		boolean isHandPair= false;
+		ArrayList<Card> kickers = new ArrayList<Card>();
+		return isHandPair;
 	}
 
-	// TODO: Implement This Method
 	public static boolean isHandHighCard(Hand h, HandScore hs) {
-		return false;
+		boolean isHandHighCard= false;
+		if ((isAcesAndEights(h, hs)==false)&&(isHandFourOfAKind(h, hs)==false)&&
+				(isHandFullHouse(h,hs)==false)&&(isHandPair(h, hs)==false)
+				&&(isHandTwoPair(h, hs))&&(isHandThreeOfAKind(h,hs)==false)
+				&&(isHandStraight(h, hs)==false)&&(isHandFlush(h, hs)==false)
+				&&(isHandFourOfAKind(h, hs)==false)&&(isHandStraightFlush(h, hs)==false)
+				&&(isHandRoyalFlush(h, hs)==false)){
+			isHandHighCard= true;
+			
+		}
+	return isHandHighCard;
 	}
 
 	
@@ -265,3 +276,4 @@ public class Hand {
 
 	}
 }
+	
