@@ -135,6 +135,56 @@ public class TestHands {
 		assertEquals(0, h.getHandScore().getKickers().size());
 
 	}
+	
+	@Test
+	public void TestAcesAndEights1() {
+
+		Hand h = new Hand();
+		h.AddCardToHand(new Card(eRank.THREE, eSuit.CLUBS));
+		h.AddCardToHand(new Card(eRank.ACE, eSuit.DIAMONDS));
+		h.AddCardToHand(new Card(eRank.ACE, eSuit.CLUBS));
+		h.AddCardToHand(new Card(eRank.EIGHT, eSuit.DIAMONDS));
+		h.AddCardToHand(new Card(eRank.EIGHT, eSuit.SPADES));
+		h.EvaluateHand();
+
+		// Hand
+		assertEquals(eHandStrength.AcesAndEights.getHandStrength(),
+				h.getHandScore().getHandStrength().getHandStrength());
+
+		// HI hand
+		assertEquals(eRank.ACE.getiRankNbr(), h.getHandScore().getHiHand().getiRankNbr());
+
+		// Number kickers.
+		assertEquals(1, h.getHandScore().getKickers().size());
+
+		// Highest kicker.
+		assertEquals(eRank.THREE, h.getHandScore().getKickers().get(0).geteRank());
+	}
+	
+	@Test
+	public void TestAcesAndEights2() {
+
+		Hand h = new Hand();
+		h.AddCardToHand(new Card(eRank.ACE, eSuit.CLUBS));
+		h.AddCardToHand(new Card(eRank.ACE, eSuit.DIAMONDS));
+		h.AddCardToHand(new Card(eRank.EIGHT, eSuit.CLUBS));
+		h.AddCardToHand(new Card(eRank.EIGHT, eSuit.DIAMONDS));
+		h.AddCardToHand(new Card(eRank.THREE, eSuit.SPADES));
+		h.EvaluateHand();
+
+		// Hand
+		assertEquals(eHandStrength.AcesAndEights.getHandStrength(),
+				h.getHandScore().getHandStrength().getHandStrength());
+
+		// HI hand
+		assertEquals(eRank.ACE.getiRankNbr(), h.getHandScore().getHiHand().getiRankNbr());
+
+		// Number kickers.
+		assertEquals(1, h.getHandScore().getKickers().size());
+
+		// Highest kicker.
+		assertEquals(eRank.THREE, h.getHandScore().getKickers().get(0).geteRank());
+	}
 
 	@Test
 	public void TestFlush() {
