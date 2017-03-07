@@ -88,10 +88,11 @@ public class Hand {
 
 	
 	public static boolean isHandRoyalFlush(Hand h, HandScore hs) {
-		ArrayList<Card> kickers = new ArrayList<Card>();
+		
 		if ((isHandFlush(h, hs) == true) && (isHandStraight(h, hs) == true)
 				&& (h.getCardsInHand().get(eCardNo.FirstCard.getCardNo()).geteRank() == eRank.KING)){
 			hs.setHandStrength(eHandStrength.RoyalFlush);
+			hs.setHiHand(h.getCardsInHand().get(eCardNo.FirstCard.getCardNo()).geteRank());
 			return true;
 		}	
 		else
@@ -100,10 +101,11 @@ public class Hand {
 	}
 
 	public static boolean isHandStraightFlush(Hand h, HandScore hs) {
-		ArrayList<Card> kickers = new ArrayList<Card>();
+
 		if ((isHandFlush(h, hs) == true) && (isHandStraight(h, hs) == true)
 				&& (h.getCardsInHand().get(eCardNo.FirstCard.getCardNo()).geteRank() != eRank.KING)){
 			hs.setHandStrength(eHandStrength.StraightFlush);
+			hs.setHiHand(h.getCardsInHand().get(eCardNo.FirstCard.getCardNo()).geteRank());
 			return true;
 		}	
 		else
@@ -117,12 +119,16 @@ public class Hand {
 				.get(eCardNo.FourthCard.getCardNo()).geteRank())){
 			kickers.add(h.getCardsInHand().get(eCardNo.FifthCard.getCardNo()));
 			hs.setHandStrength(eHandStrength.FourOfAKind);
+			hs.setHiHand(h.getCardsInHand().get(eCardNo.FirstCard.getCardNo()).geteRank());
+			hs.setLoHand(h.getCardsInHand().get(eCardNo.FifthCard.getCardNo()).geteRank());
 			return true;
 		}
 		else if ((h.getCardsInHand().get(eCardNo.SecondCard.getCardNo()).geteRank()) == (h.getCardsInHand()
 				.get(eCardNo.FifthCard.getCardNo()).geteRank())){
 			kickers.add(h.getCardsInHand().get(eCardNo.FirstCard.getCardNo()));
 			hs.setHandStrength(eHandStrength.FourOfAKind);
+			hs.setHiHand(h.getCardsInHand().get(eCardNo.SecondCard.getCardNo()).geteRank());
+			hs.setLoHand(h.getCardsInHand().get(eCardNo.FirstCard.getCardNo()).geteRank());
 			return true;
 		}
 		else
@@ -140,7 +146,7 @@ public class Hand {
 					&& (h.getCardsInHand().get(eCardNo.FirstCard.getCardNo()).geteSuit() == h.getCardsInHand()
 							.get(eCardNo.FifthCard.getCardNo()).geteSuit())) {
 				hs.setHandStrength(eHandStrength.Flush);
-				hs.getKickers().add(h.getCardsInHand().get(eCardNo.FirstCard.getCardNo()));
+				hs.setHiHand(h.getCardsInHand().get(eCardNo.FirstCard.getCardNo()).geteRank());				
 				return true;
 			}
 
@@ -229,6 +235,7 @@ public class Hand {
 				&& (isHandFourOfAKind(h, hs) == false) && (isHandFullHouse(h, hs) == false)){
 			kickers.add(h.getCardsInHand().get(eCardNo.FifthCard.getCardNo()));
 			hs.setHandStrength(eHandStrength.TwoPair);
+			hs.setHiHand(h.getCardsInHand().get(eCardNo.FirstCard.getCardNo()).geteRank());
 			return true;
 			
 		}
@@ -240,6 +247,7 @@ public class Hand {
 				&& (isHandFourOfAKind(h, hs) == false) && (isHandFullHouse(h, hs) == false)){
 			kickers.add(h.getCardsInHand().get(eCardNo.ThirdCard.getCardNo()));
 			hs.setHandStrength(eHandStrength.TwoPair);
+			hs.setHiHand(h.getCardsInHand().get(eCardNo.FirstCard.getCardNo()).geteRank());
 			return true;
 		}
 		else if ((h.getCardsInHand().get(eCardNo.SecondCard.getCardNo()).geteRank()) == (h.getCardsInHand()
@@ -249,6 +257,7 @@ public class Hand {
 				&& (isHandFourOfAKind(h, hs) == false) && (isHandFullHouse(h, hs) == false)){
 			kickers.add(h.getCardsInHand().get(eCardNo.FirstCard.getCardNo()));
 			hs.setHandStrength(eHandStrength.TwoPair);
+			hs.setHiHand(h.getCardsInHand().get(eCardNo.SecondCard.getCardNo()).geteRank());
 			return true;
 		}
 		else
@@ -267,7 +276,9 @@ public class Hand {
 			kickers.add(h.getCardsInHand().get(eCardNo.FourthCard.getCardNo()));
 			kickers.add(h.getCardsInHand().get(eCardNo.FifthCard.getCardNo()));
 			isHandPair = true;
+			hs.setHiHand(h.getCardsInHand().get(eCardNo.FirstCard.getCardNo()).geteRank());
 			hs.setHandStrength(eHandStrength.Pair);
+			
 		}
 		else if((h.getCardsInHand().get(eCardNo.SecondCard.getCardNo()).geteSuit() == h.getCardsInHand()
 				.get(eCardNo.ThirdCard.getCardNo()).geteSuit())
@@ -277,7 +288,9 @@ public class Hand {
 		kickers.add(h.getCardsInHand().get(eCardNo.FourthCard.getCardNo()));
 		kickers.add(h.getCardsInHand().get(eCardNo.FifthCard.getCardNo()));
 		isHandPair = true;
+		hs.setHiHand(h.getCardsInHand().get(eCardNo.SecondCard.getCardNo()).geteRank());
 		hs.setHandStrength(eHandStrength.Pair);
+		
 		}
 		else if((h.getCardsInHand().get(eCardNo.ThirdCard.getCardNo()).geteSuit() == h.getCardsInHand()
 				.get(eCardNo.FourthCard.getCardNo()).geteSuit())
@@ -287,6 +300,7 @@ public class Hand {
 		kickers.add(h.getCardsInHand().get(eCardNo.SecondCard.getCardNo()));
 		kickers.add(h.getCardsInHand().get(eCardNo.FifthCard.getCardNo()));
 		isHandPair = true;
+		hs.setHiHand(h.getCardsInHand().get(eCardNo.ThirdCard.getCardNo()).geteRank());
 		hs.setHandStrength(eHandStrength.Pair);
 		}
 		else if((h.getCardsInHand().get(eCardNo.FourthCard.getCardNo()).geteSuit() == h.getCardsInHand()
@@ -297,6 +311,7 @@ public class Hand {
 		kickers.add(h.getCardsInHand().get(eCardNo.SecondCard.getCardNo()));
 		kickers.add(h.getCardsInHand().get(eCardNo.ThirdCard.getCardNo()));
 		isHandPair = true;
+		hs.setHiHand(h.getCardsInHand().get(eCardNo.FourthCard.getCardNo()).geteRank());
 		hs.setHandStrength(eHandStrength.Pair);
 		}
 		return isHandPair;
@@ -304,13 +319,19 @@ public class Hand {
 
 	public static boolean isHandHighCard(Hand h, HandScore hs) {
 		boolean isHandHighCard = false;
+		ArrayList<Card> kickers = new ArrayList<Card>();
 		if ((isAcesAndEights(h, hs) == false) && (isHandFourOfAKind(h, hs) == false)
 				&& (isHandFullHouse(h, hs) == false) && (isHandPair(h, hs) == false) && (isHandTwoPair(h, hs))
 				&& (isHandThreeOfAKind(h, hs) == false) && (isHandStraight(h, hs) == false)
 				&& (isHandFlush(h, hs) == false) && (isHandFourOfAKind(h, hs) == false)
 				&& (isHandStraightFlush(h, hs) == false) && (isHandRoyalFlush(h, hs) == false)) {
 			isHandHighCard = true;
+			kickers.add(h.getCardsInHand().get(eCardNo.SecondCard.getCardNo()));
+			kickers.add(h.getCardsInHand().get(eCardNo.ThirdCard.getCardNo()));
+			kickers.add(h.getCardsInHand().get(eCardNo.FourthCard.getCardNo()));
+			kickers.add(h.getCardsInHand().get(eCardNo.FifthCard.getCardNo()));
 			hs.setHandStrength(eHandStrength.HighCard);
+			hs.setHiHand(h.getCardsInHand().get(eCardNo.FirstCard.getCardNo()).geteRank());
 
 		}
 		return isHandHighCard;
@@ -328,6 +349,7 @@ public class Hand {
 				kickers.add(h.getCardsInHand().get(eCardNo.FifthCard.getCardNo()));
 				isAcesAndEights = true;
 				hs.setHandStrength(eHandStrength.AcesAndEights);
+				hs.setHiHand(h.getCardsInHand().get(eCardNo.FirstCard.getCardNo()).geteRank());
 			}
 			if (h.getCardsInHand().get(eCardNo.FifthCard.getCardNo()).geteRank() == h.getCardsInHand()
 					.get(eCardNo.FourthCard.getCardNo()).geteRank()
@@ -335,6 +357,7 @@ public class Hand {
 				kickers.add(h.getCardsInHand().get(eCardNo.ThirdCard.getCardNo()));
 				isAcesAndEights = true;
 				hs.setHandStrength(eHandStrength.AcesAndEights);
+				hs.setHiHand(h.getCardsInHand().get(eCardNo.FirstCard.getCardNo()).geteRank());
 
 			} else {
 				return isAcesAndEights;
