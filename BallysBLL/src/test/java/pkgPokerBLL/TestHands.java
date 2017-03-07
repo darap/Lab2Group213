@@ -235,6 +235,29 @@ public class TestHands {
 		assertEquals(0, h.getHandScore().getKickers().size());
 
 	}
+	
+	@Test
+	public void TestStraight2() {
+
+		Hand h = new Hand();
+		h.AddCardToHand(new Card(eRank.ACE, eSuit.CLUBS));
+		h.AddCardToHand(new Card(eRank.TWO, eSuit.DIAMONDS));
+		h.AddCardToHand(new Card(eRank.THREE, eSuit.CLUBS));
+		h.AddCardToHand(new Card(eRank.FOUR, eSuit.DIAMONDS));
+		h.AddCardToHand(new Card(eRank.FIVE, eSuit.SPADES));
+		h.EvaluateHand();
+
+		// Hand
+		assertEquals(eHandStrength.Straight.getHandStrength(), 
+				h.getHandScore().getHandStrength().getHandStrength());
+
+		// HI hand
+		assertEquals(eRank.ACE.getiRankNbr(), h.getHandScore().getHiHand().getiRankNbr());
+
+		// no kickers.
+		assertEquals(0, h.getHandScore().getKickers().size());
+
+	}
 
 	@Test
 	public void TestThreeOfAKind1() {
