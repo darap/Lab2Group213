@@ -241,10 +241,10 @@ public class TestHands {
 
 		Hand h = new Hand();
 		h.AddCardToHand(new Card(eRank.ACE, eSuit.CLUBS));
-		h.AddCardToHand(new Card(eRank.TWO, eSuit.DIAMONDS));
-		h.AddCardToHand(new Card(eRank.THREE, eSuit.CLUBS));
-		h.AddCardToHand(new Card(eRank.FOUR, eSuit.DIAMONDS));
-		h.AddCardToHand(new Card(eRank.FIVE, eSuit.SPADES));
+		h.AddCardToHand(new Card(eRank.FIVE, eSuit.DIAMONDS));
+		h.AddCardToHand(new Card(eRank.FOUR, eSuit.CLUBS));
+		h.AddCardToHand(new Card(eRank.THREE, eSuit.DIAMONDS));
+		h.AddCardToHand(new Card(eRank.TWO, eSuit.SPADES));
 		h.EvaluateHand();
 
 		// Hand
