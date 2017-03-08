@@ -270,7 +270,7 @@ public class Hand {
 		ArrayList<Card> kickers = new ArrayList<Card>();
 		if((h.getCardsInHand().get(eCardNo.FirstCard.getCardNo()).geteSuit() == h.getCardsInHand()
 					.get(eCardNo.SecondCard.getCardNo()).geteSuit())
-				&&(isAcesAndEights(h, hs)==false)&&(isHandFourOfAKind(h, hs)==false)
+				&&(isHandAcesAndEights(h, hs)==false)&&(isHandFourOfAKind(h, hs)==false)
 				&&(isHandTwoPair(h, hs)==false)&&(isHandThreeOfAKind(h, hs)==false)){
 			kickers.add(h.getCardsInHand().get(eCardNo.ThirdCard.getCardNo()));
 			kickers.add(h.getCardsInHand().get(eCardNo.FourthCard.getCardNo()));
@@ -282,7 +282,7 @@ public class Hand {
 		}
 		else if((h.getCardsInHand().get(eCardNo.SecondCard.getCardNo()).geteSuit() == h.getCardsInHand()
 				.get(eCardNo.ThirdCard.getCardNo()).geteSuit())
-			&&(isAcesAndEights(h, hs)==false)&&(isHandFourOfAKind(h, hs)==false)
+			&&(isHandAcesAndEights(h, hs)==false)&&(isHandFourOfAKind(h, hs)==false)
 			&&(isHandTwoPair(h, hs)==false)&&(isHandThreeOfAKind(h, hs)==false)){
 		kickers.add(h.getCardsInHand().get(eCardNo.FirstCard.getCardNo()));
 		kickers.add(h.getCardsInHand().get(eCardNo.FourthCard.getCardNo()));
@@ -294,7 +294,7 @@ public class Hand {
 		}
 		else if((h.getCardsInHand().get(eCardNo.ThirdCard.getCardNo()).geteSuit() == h.getCardsInHand()
 				.get(eCardNo.FourthCard.getCardNo()).geteSuit())
-			&&(isAcesAndEights(h, hs)==false)&&(isHandFourOfAKind(h, hs)==false)
+			&&(isHandAcesAndEights(h, hs)==false)&&(isHandFourOfAKind(h, hs)==false)
 			&&(isHandTwoPair(h, hs)==false)&&(isHandThreeOfAKind(h, hs)==false)){
 		kickers.add(h.getCardsInHand().get(eCardNo.FirstCard.getCardNo()));
 		kickers.add(h.getCardsInHand().get(eCardNo.SecondCard.getCardNo()));
@@ -305,7 +305,7 @@ public class Hand {
 		}
 		else if((h.getCardsInHand().get(eCardNo.FourthCard.getCardNo()).geteSuit() == h.getCardsInHand()
 				.get(eCardNo.FifthCard.getCardNo()).geteSuit())
-			&&(isAcesAndEights(h, hs)==false)&&(isHandFourOfAKind(h, hs)==false)
+			&&(isHandAcesAndEights(h, hs)==false)&&(isHandFourOfAKind(h, hs)==false)
 			&&(isHandTwoPair(h, hs)==false)&&(isHandThreeOfAKind(h, hs)==false)){
 		kickers.add(h.getCardsInHand().get(eCardNo.FirstCard.getCardNo()));
 		kickers.add(h.getCardsInHand().get(eCardNo.SecondCard.getCardNo()));
@@ -320,7 +320,7 @@ public class Hand {
 	public static boolean isHandHighCard(Hand h, HandScore hs) {
 		boolean isHandHighCard = false;
 		ArrayList<Card> kickers = new ArrayList<Card>();
-		if ((isAcesAndEights(h, hs) == false) && (isHandFourOfAKind(h, hs) == false)
+		if ((isHandAcesAndEights(h, hs) == false) && (isHandFourOfAKind(h, hs) == false)
 				&& (isHandFullHouse(h, hs) == false) && (isHandPair(h, hs) == false) && (isHandTwoPair(h, hs))
 				&& (isHandThreeOfAKind(h, hs) == false) && (isHandStraight(h, hs) == false)
 				&& (isHandFlush(h, hs) == false) && (isHandFourOfAKind(h, hs) == false)
@@ -337,7 +337,7 @@ public class Hand {
 		return isHandHighCard;
 	}
 
-	public static boolean isAcesAndEights(Hand h, HandScore hs) {
+	public static boolean isHandAcesAndEights(Hand h, HandScore hs) {
 		boolean isAcesAndEights = false;
 		ArrayList<Card> kickers = new ArrayList<Card>();
 		if (h.getCardsInHand().get(eCardNo.FirstCard.getCardNo()).geteRank() == h.getCardsInHand()
