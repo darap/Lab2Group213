@@ -363,6 +363,30 @@ public class TestHands {
 	public void TestTwoPair2() {
 
 		Hand h = new Hand();
+		h.AddCardToHand(new Card(eRank.FOUR, eSuit.CLUBS));
+		h.AddCardToHand(new Card(eRank.FOUR, eSuit.DIAMONDS));
+		h.AddCardToHand(new Card(eRank.TWO, eSuit.SPADES));
+		h.AddCardToHand(new Card(eRank.THREE, eSuit.DIAMONDS));
+		h.AddCardToHand(new Card(eRank.THREE, eSuit.SPADES));
+		h.EvaluateHand();
+
+		// Hand better be two pair
+		assertEquals(eHandStrength.TwoPair.getHandStrength(), 
+				h.getHandScore().getHandStrength().getHandStrength());
+
+		// HI hand better be 'Four'
+		assertEquals(eRank.FOUR.getiRankNbr(), h.getHandScore().getHiHand().getiRankNbr());
+
+		// Number of kickers.
+		assertEquals(1, h.getHandScore().getKickers().size());
+
+		// first kicker in list, because highest kicker.
+		assertEquals(eRank.TWO, h.getHandScore().getKickers().get(0).geteRank());
+	}
+
+	public void TestTwoPair3() {
+
+		Hand h = new Hand();
 		h.AddCardToHand(new Card(eRank.TWO, eSuit.CLUBS));
 		h.AddCardToHand(new Card(eRank.FOUR, eSuit.DIAMONDS));
 		h.AddCardToHand(new Card(eRank.FOUR, eSuit.SPADES));
@@ -384,6 +408,9 @@ public class TestHands {
 		assertEquals(eRank.TWO, h.getHandScore().getKickers().get(0).geteRank());
 	}
 
+	
+	
+	
 	@Test
 	public void TestOnePair1() {
 //Pair is first highest
@@ -496,8 +523,7 @@ public class TestHands {
 		h.EvaluateHand();
 
 		// Hand
-		assertEquals(eHandStrength.HighCard.getHandStrength(), 
-				h.getHandScore().getHandStrength().getHandStrength());
+		assertEquals(eHandStrength.HighCard.getHandStrength(), h.getHandScore().getHandStrength().getHandStrength());
 
 		// HI hand
 		assertEquals(eRank.ACE.getiRankNbr(), h.getHandScore().getHiHand().getiRankNbr());
