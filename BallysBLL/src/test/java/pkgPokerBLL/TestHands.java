@@ -253,7 +253,7 @@ public class TestHands {
 
 	@Test
 	public void TestThreeOfAKind1() {
-
+//three of a kind is high card
 		Hand h = new Hand();
 		h.AddCardToHand(new Card(eRank.THREE, eSuit.CLUBS));
 		h.AddCardToHand(new Card(eRank.TWO, eSuit.DIAMONDS));
@@ -278,9 +278,9 @@ public class TestHands {
 
 	@Test
 	public void TestThreeOfAKind2() {
-
+//middle is three of a kind
 		Hand h = new Hand();
-		h.AddCardToHand(new Card(eRank.THREE, eSuit.CLUBS));
+		h.AddCardToHand(new Card(eRank.SIX, eSuit.CLUBS));
 		h.AddCardToHand(new Card(eRank.FOUR, eSuit.DIAMONDS));
 		h.AddCardToHand(new Card(eRank.FOUR, eSuit.CLUBS));
 		h.AddCardToHand(new Card(eRank.FOUR, eSuit.SPADES));
@@ -298,7 +298,7 @@ public class TestHands {
 		assertEquals(2, h.getHandScore().getKickers().size());
 
 		// Make sure 3 is first kicker in list, because highest kicker.
-		assertEquals(eRank.THREE, h.getHandScore().getKickers().get(0).geteRank());
+		assertEquals(eRank.SIX, h.getHandScore().getKickers().get(0).geteRank());
 	}
 
 	@Test
@@ -308,8 +308,8 @@ public class TestHands {
 		h.AddCardToHand(new Card(eRank.FOUR, eSuit.CLUBS));
 		h.AddCardToHand(new Card(eRank.FOUR, eSuit.DIAMONDS));
 		h.AddCardToHand(new Card(eRank.FOUR, eSuit.SPADES));
-		h.AddCardToHand(new Card(eRank.THREE, eSuit.DIAMONDS));
-		h.AddCardToHand(new Card(eRank.TWO, eSuit.SPADES));
+		h.AddCardToHand(new Card(eRank.ACE, eSuit.DIAMONDS));
+		h.AddCardToHand(new Card(eRank.JACK, eSuit.SPADES));
 		h.EvaluateHand();
 
 		// Hand better be a three of a kind
@@ -323,12 +323,12 @@ public class TestHands {
 		assertEquals(2, h.getHandScore().getKickers().size());
 
 		// Make sure 3 is first kicker in list, because highest kicker.
-		assertEquals(eRank.THREE, h.getHandScore().getKickers().get(0).geteRank());
+		assertEquals(eRank.ACE, h.getHandScore().getKickers().get(0).geteRank());
 	}
 
 	@Test
 	public void TestTwoPair1() {
-
+//low card kicker
 		Hand h = new Hand();
 		h.AddCardToHand(new Card(eRank.FOUR, eSuit.CLUBS));
 		h.AddCardToHand(new Card(eRank.FOUR, eSuit.DIAMONDS));
@@ -342,7 +342,10 @@ public class TestHands {
 
 		// HI hand better be 'Four'
 		assertEquals(eRank.FOUR.getiRankNbr(), h.getHandScore().getHiHand().getiRankNbr());
-
+		
+		// LO hand better be 'Three'
+		assertEquals(eRank.THREE.getiRankNbr(), h.getHandScore().getLoHand().getiRankNbr());
+		
 		// Number of kickers.
 		assertEquals(1, h.getHandScore().getKickers().size());
 
@@ -352,12 +355,12 @@ public class TestHands {
 
 	@Test
 	public void TestTwoPair2() {
-
+//middle card kicker
 		Hand h = new Hand();
 		h.AddCardToHand(new Card(eRank.FOUR, eSuit.CLUBS));
 		h.AddCardToHand(new Card(eRank.FOUR, eSuit.DIAMONDS));
 		h.AddCardToHand(new Card(eRank.TWO, eSuit.SPADES));
-		h.AddCardToHand(new Card(eRank.THREE, eSuit.DIAMONDS));
+		h.AddCardToHand(new Card(eRank.TWO, eSuit.DIAMONDS));
 		h.AddCardToHand(new Card(eRank.THREE, eSuit.SPADES));
 		h.EvaluateHand();
 
@@ -366,18 +369,20 @@ public class TestHands {
 
 		// HI hand better be 'Four'
 		assertEquals(eRank.FOUR.getiRankNbr(), h.getHandScore().getHiHand().getiRankNbr());
-
+		
+		// LO hand better be 'Three'
+		assertEquals(eRank.TWO.getiRankNbr(), h.getHandScore().getLoHand().getiRankNbr());
 		// Number of kickers.
 		assertEquals(1, h.getHandScore().getKickers().size());
 
 		// first kicker in list, because highest kicker.
-		assertEquals(eRank.TWO, h.getHandScore().getKickers().get(0).geteRank());
+		assertEquals(eRank.THREE, h.getHandScore().getKickers().get(0).geteRank());
 	}
 
 	public void TestTwoPair3() {
-
+//HighCard is kicker
 		Hand h = new Hand();
-		h.AddCardToHand(new Card(eRank.TWO, eSuit.CLUBS));
+		h.AddCardToHand(new Card(eRank.ACE, eSuit.CLUBS));
 		h.AddCardToHand(new Card(eRank.FOUR, eSuit.DIAMONDS));
 		h.AddCardToHand(new Card(eRank.FOUR, eSuit.SPADES));
 		h.AddCardToHand(new Card(eRank.THREE, eSuit.DIAMONDS));
@@ -390,11 +395,14 @@ public class TestHands {
 		// HI hand better be 'Four'
 		assertEquals(eRank.FOUR.getiRankNbr(), h.getHandScore().getHiHand().getiRankNbr());
 
+		// LO hand better be 'Three'
+		assertEquals(eRank.THREE.getiRankNbr(), h.getHandScore().getLoHand().getiRankNbr());
+		
 		// Number of kickers.
 		assertEquals(1, h.getHandScore().getKickers().size());
 
 		// first kicker in list, because highest kicker.
-		assertEquals(eRank.TWO, h.getHandScore().getKickers().get(0).geteRank());
+		assertEquals(eRank.ACE, h.getHandScore().getKickers().get(0).geteRank());
 	}
 
 	@Test

@@ -263,6 +263,7 @@ public class Hand {
 				hs.setKickers(kickers);
 				hs.setHandStrength(eHandStrength.TwoPair);
 				hs.setHiHand(h.getCardsInHand().get(eCardNo.FirstCard.getCardNo()).geteRank());
+				hs.setLoHand(h.getCardsInHand().get(eCardNo.ThirdCard.getCardNo()).geteRank());
 				isTwoPair = true;
 
 			}
@@ -275,6 +276,7 @@ public class Hand {
 				hs.setKickers(kickers);
 				hs.setHandStrength(eHandStrength.TwoPair);
 				hs.setHiHand(h.getCardsInHand().get(eCardNo.FirstCard.getCardNo()).geteRank());
+				hs.setLoHand(h.getCardsInHand().get(eCardNo.FourthCard.getCardNo()).geteRank());
 				isTwoPair = true;
 
 			} else if ((h.getCardsInHand().get(eCardNo.SecondCard.getCardNo()).geteRank()) == (h.getCardsInHand()
@@ -285,6 +287,7 @@ public class Hand {
 				hs.setKickers(kickers);
 				hs.setHandStrength(eHandStrength.TwoPair);
 				hs.setHiHand(h.getCardsInHand().get(eCardNo.SecondCard.getCardNo()).geteRank());
+				hs.setLoHand(h.getCardsInHand().get(eCardNo.FourthCard.getCardNo()).geteRank());
 				isTwoPair = true;
 			} else
 
