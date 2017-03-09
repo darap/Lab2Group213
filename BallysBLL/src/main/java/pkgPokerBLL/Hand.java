@@ -101,7 +101,7 @@ public class Hand {
 	public static boolean isHandStraightFlush(Hand h, HandScore hs) {
 
 		if ((isHandFlush(h, hs) == true) && (isHandStraight(h, hs) == true)
-				&& (h.getCardsInHand().get(eCardNo.FirstCard.getCardNo()).geteRank() != eRank.KING)) {
+				&& (isHandRoyalFlush(h, hs)==false)) {
 			hs.setHandStrength(eHandStrength.StraightFlush);
 			hs.setHiHand(h.getCardsInHand().get(eCardNo.FirstCard.getCardNo()).geteRank());
 			return true;

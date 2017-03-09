@@ -8,8 +8,7 @@ import pkgPokerEnum.eHandStrength;
 import pkgPokerEnum.eRank;
 import pkgPokerEnum.eSuit;
 
-public class TestHands {
-
+public class TestHands {	
 	@Test
 	public void TestRoyalFlush() {
 
@@ -53,7 +52,11 @@ public class TestHands {
 		assertEquals(0, h.getHandScore().getKickers().size());
 
 	}
-
+	
+	
+	
+	
+	
 	@Test
 	public void TestFourOfAKind1() {
 
@@ -134,7 +137,30 @@ public class TestHands {
 		assertEquals(0, h.getHandScore().getKickers().size());
 
 	}
+	@Test
+	public void TestFullHouse2() {
 
+		Hand h = new Hand();
+		h.AddCardToHand(new Card(eRank.THREE, eSuit.CLUBS));
+		h.AddCardToHand(new Card(eRank.THREE, eSuit.DIAMONDS));
+		h.AddCardToHand(new Card(eRank.THREE, eSuit.CLUBS));
+		h.AddCardToHand(new Card(eRank.FOUR, eSuit.DIAMONDS));
+		h.AddCardToHand(new Card(eRank.FOUR, eSuit.SPADES));
+		h.EvaluateHand();
+
+		// Hand better be a full house
+		assertEquals(eHandStrength.FullHouse.getHandStrength(), h.getHandScore().getHandStrength().getHandStrength());
+
+		// HI hand better be 'Four'
+		assertEquals(eRank.THREE.getiRankNbr(), h.getHandScore().getHiHand().getiRankNbr());
+
+		// LO hand better be 'Three'
+		assertEquals(eRank.FOUR.getiRankNbr(), h.getHandScore().getLoHand().getiRankNbr());
+
+		// Full House has no kickers.
+		assertEquals(0, h.getHandScore().getKickers().size());
+
+	}
 	@Test
 	public void TestAcesAndEights1() {
 
@@ -378,7 +404,7 @@ public class TestHands {
 		// first kicker in list, because highest kicker.
 		assertEquals(eRank.THREE, h.getHandScore().getKickers().get(0).geteRank());
 	}
-
+	@Test
 	public void TestTwoPair3() {
 //HighCard is kicker
 		Hand h = new Hand();
